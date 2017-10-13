@@ -44,7 +44,7 @@ series(getCompileTask(__dirname), err => {
     .option('-t, --test [test]', 'Execute specific (unit|watch|watchAll) unit & coverage test task(s)  (default: unit)', /^(unit|watch|watchAll)$/i, 'unit')
     .option('-c, --scout [scout]', 'Execute specific Journey and Brand release bundle scout Ex:journeyName~brandName')
     .option('-m, --mockServer [mockServer]', 'Execute development JSON mock server(server|watch) (default: server)', /^(server|watch)$/i, 'server')
-    .option('-r, --checkStyle [checkStyle]', 'Execute to generate LINT checkStyle(base|style) (default: base)', /^(base|style)$/i, 'base')
+    .option('-r, --checkStyle', 'Execute to generate LINT checkStyle for base')
     .option('-d, --doc', 'Execute technicial document generator')
     .parse(process.argv);
 

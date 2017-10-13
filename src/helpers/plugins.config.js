@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import assignIn from 'lodash/assignIn';
 import VersionTemplatePlugin from './plugins/version-template-plugin';
 import {
-  commonConfigs,
+  common as commonConfigs,
 } from '../configs';
 
 const common = [];

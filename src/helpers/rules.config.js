@@ -2,7 +2,7 @@ import sysPath from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import { CLI_PATH } from '../constants';
 import {
-  commonConfigs,
+  common as commonConfigs,
 } from '../configs';
 
 const ROOT_DIR = sysPath.resolve(`${process.cwd()}`);
@@ -48,6 +48,8 @@ const development = [
         importLoaders: 1,
       },
     }, {
+      loader: 'resolve-url-loader',
+    }, {
       loader: 'postcss-loader',
       options: {
         sourceMap: true,
@@ -73,6 +75,8 @@ const development = [
         sourceMap: true,
         importLoaders: 1,
       },
+    }, {
+      loader: 'resolve-url-loader',
     }, {
       loader: 'postcss-loader',
       options: {
@@ -100,11 +104,13 @@ const production = [
         loader: 'css-loader',
         options: {
           minimize: true,
-          importLoaders: 1,
         },
+      }, {
+        loader: 'resolve-url-loader',
       }, {
         loader: 'postcss-loader',
         options: {
+          sourceMap: true,
           config: {
             path: CLI_PATH.POST_CSS_CONFIG_PATH,
           },
@@ -113,6 +119,8 @@ const production = [
         loader: 'sass-loader',
         options: {
           includePaths: ['node_modules'],
+          sourceMap: true,
+          sourceMapContents: true,
         },
       }],
       fallback: 'style-loader',
@@ -127,6 +135,8 @@ const production = [
           minimize: true,
           importLoaders: 1,
         },
+      }, {
+        loader: 'resolve-url-loader',
       }, {
         loader: 'postcss-loader',
         options: {

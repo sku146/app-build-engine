@@ -52,17 +52,7 @@ const getTechDocCommand = () => {
   return CLI_COMMAND.docGen;
 };
 
-const getReportCommand = (program = {}) => {
-  if (program.checkStyle === DEFAULT_VALUE.STYLE) {
-    const styleLintResult = isValidTask('style');
-    if (styleLintResult && !styleLintResult.status) {
-      exitError(styleLintResult.msg);
-    }
-    if (isEmpty(eslintConfig.style)) {
-      return MSG.LINT_EMPTY;
-    }
-    return CLI_COMMAND.styleLintReport()(eslintConfig.style[0]);
-  }
+const getReportCommand = () => {
   const esLintResult = isValidTask('eslint');
   if (esLintResult && !esLintResult.status) {
     exitError(esLintResult.msg);
@@ -196,8 +186,8 @@ const executeCommand = (program = {}, args = [], dirName = '') => {
     '--scout': () => getScoutCommand(program),
     '-m': () => getMockServerCommand(program, dirName),
     '--mockServer': () => getMockServerCommand(program, dirName),
-    '-r': () => getReportCommand(program),
-    '--checkStyle': () => getReportCommand(program),
+    '-r': () => getReportCommand(),
+    '--checkStyle': () => getReportCommand(),
     '-d': () => getTechDocCommand(),
     '--doc': () => getTechDocCommand(),
   };
