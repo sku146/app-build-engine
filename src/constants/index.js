@@ -49,6 +49,7 @@ export const CLI_PATH = {
       `${process.cwd()}/configs`,
     ],
     files: [
+      `${process.cwd()}/configs/engine/postcss.config.js`,
       `${process.cwd()}/configs/engine/webpack.prod.config.js`,
       `${process.cwd()}/configs/engine/webpack.dev.server.config.js`,
       `${process.cwd()}/configs/engine/webpack.dev.config.js`,
@@ -64,11 +65,13 @@ export const CLI_PATH = {
   },
   CONFIG_LOCAL_PATH: '__temp__',
   RELEASE_PATH: 'content/',
+  NODE_MODULES: `${process.cwd()}/node_modules`,
   TEST_CONFIG_PATH: `${process.cwd()}/configs/engine/jest.config.json`,
   TECH_DOC_PATH: `${process.cwd()}/configs/engine/conf.json`,
   ESLINT_CONFIG_PATH: `${process.cwd()}/configs/engine/eslint.config.js`,
   STYLE_LINT_CONFIG_PATH: `${process.cwd()}/.stylelintrc`,
   MOCK_CONFIG_PATH: `${process.cwd()}/configs/engine/mock-server/mock.server.js`,
+  POST_CSS_CONFIG_PATH: `${process.cwd()}/configs/engine/postcss.config.js`,
 };
 
 export const CLI_COMMAND = {

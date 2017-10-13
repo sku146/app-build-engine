@@ -1,5 +1,9 @@
 import webpack from 'webpack';
+import assignIn from 'lodash/assignIn';
 import VersionTemplatePlugin from './plugins/version-template-plugin';
+import {
+  commonConfigs,
+} from '../configs';
 
 const common = [];
 
@@ -11,13 +15,13 @@ const development = [
 
 const production = [
   ...common,
-  new webpack.optimize.UglifyJsPlugin({
+  new webpack.optimize.UglifyJsPlugin(assignIn({}, {
     minimize: true,
     comments: true,
     compress: {
       warnings: false,
     },
-  }),
+  }, commonConfigs.prodBunldeOptions || {})),
 ];
 
 export default {

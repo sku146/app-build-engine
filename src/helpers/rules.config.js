@@ -1,9 +1,11 @@
 import sysPath from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import { CLI_PATH } from '../constants';
+import {
+  commonConfigs,
+} from '../configs';
 
 const ROOT_DIR = sysPath.resolve(`${process.cwd()}`);
-const NODE_MODULES_DIR = sysPath.resolve(`${process.cwd()}`, 'node_modules');
-const POST_CSS_CONFIG = sysPath.resolve(`${process.cwd()}`, 'configs/engine/postcss.config.js');
 
 const common = [
   {
@@ -16,7 +18,7 @@ const common = [
     use: [{
       loader: 'url-loader',
       options: {
-        limit: 100000,
+        limit: commonConfigs.assetsBundleLimit || 100000,
         name: 'fonts/[name].[ext]?[hash]',
       },
     }],
@@ -26,7 +28,7 @@ const common = [
     use: [{
       loader: 'file-loader',
       options: {
-        limit: 100000,
+        limit: commonConfigs.assetsBundleLimit || 100000,
         name: 'img/[name].[ext]?[hash]',
       },
     }],
@@ -50,7 +52,7 @@ const development = [
       options: {
         sourceMap: true,
         config: {
-          path: POST_CSS_CONFIG,
+          path: CLI_PATH.POST_CSS_CONFIG_PATH,
         },
       },
     }, {
@@ -64,25 +66,25 @@ const development = [
   {
     test: /\.less$/,
     use: [{
-      loader: 'style-loader', // creates style nodes from JS strings
+      loader: 'style-loader',
     }, {
       loader: 'css-loader',
       options: {
         sourceMap: true,
         importLoaders: 1,
-      }
+      },
     }, {
       loader: 'postcss-loader',
       options: {
         sourceMap: true,
         config: {
-          path: POST_CSS_CONFIG,
+          path: CLI_PATH.POST_CSS_CONFIG_PATH,
         },
       },
     }, {
-      loader: 'less-loader', // compiles Less to CSS
+      loader: 'less-loader',
       options: {
-        paths: [ROOT_DIR, NODE_MODULES_DIR],
+        paths: [ROOT_DIR, CLI_PATH.NODE_MODULES],
         sourceMap: true,
       },
     }],
@@ -104,7 +106,7 @@ const production = [
         loader: 'postcss-loader',
         options: {
           config: {
-            path: POST_CSS_CONFIG,
+            path: CLI_PATH.POST_CSS_CONFIG_PATH,
           },
         },
       }, {
@@ -129,13 +131,13 @@ const production = [
         loader: 'postcss-loader',
         options: {
           config: {
-            path: POST_CSS_CONFIG,
+            path: CLI_PATH.POST_CSS_CONFIG_PATH,
           },
         },
       }, {
         loader: 'less-loader',
         options: {
-          paths: [ROOT_DIR, NODE_MODULES_DIR],
+          paths: [ROOT_DIR, CLI_PATH.NODE_MODULES],
         },
       }],
       fallback: 'style-loader',
