@@ -76,8 +76,6 @@ const development = [
         importLoaders: 1,
       },
     }, {
-      loader: 'resolve-url-loader',
-    }, {
       loader: 'postcss-loader',
       options: {
         sourceMap: true,
@@ -135,8 +133,6 @@ const production = [
           minimize: true,
           importLoaders: 1,
         },
-      }, {
-        loader: 'resolve-url-loader',
       }, {
         loader: 'postcss-loader',
         options: {
