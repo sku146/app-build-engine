@@ -68,7 +68,7 @@ const getMockServerCommand = (program = {}, dirName = '') => {
   if (mockResult && !mockResult.status) {
     exitError(mockResult.msg);
   }
-  const path = `${dirName}/${CLI_PATH.CONFIG_LOCAL_PATH}`;
+  const path = CLI_PATH.MOCK_CONFIG_PATH;
 
   if (program.mockServer === DEFAULT_VALUE.MOCK) {
     return CLI_COMMAND.mockServer()(path);
