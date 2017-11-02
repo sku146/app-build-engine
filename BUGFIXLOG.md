@@ -7,3 +7,8 @@
 
 ### Mock server issue fixed
 - fixed the mock server & watcher issues.
+
+## v1.0.5 (Nov 01, 2017)
+
+### Image file loader issue fixed
+- fixed the image file loader to url loader.

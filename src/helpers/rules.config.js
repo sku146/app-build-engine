@@ -26,7 +26,7 @@ const common = [
   {
     test: /\.(gif|jpg|jpe?g|png)$/,
     use: [{
-      loader: 'file-loader',
+      loader: 'url-loader',
       options: {
         limit: commonConfigs.assetsBundleLimit || 100000,
         name: 'img/[name].[ext]?[hash]',
