@@ -1,3 +1,9 @@
 {
-  "presets": ["build-engine"]
+  "presets": [
+    "build-engine",
+    "flow"
+  ],
+  "plugins": [
+    "transform-flow-comments"
+  ]
 }

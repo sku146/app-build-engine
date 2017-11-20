@@ -1,11 +1,14 @@
 import webpack from 'webpack';
 import assignIn from 'lodash/assignIn';
 import VersionTemplatePlugin from './plugins/version-template-plugin';
+import FlowBabelWebpackPlugin from 'flow-babel-webpack-plugin';
 import {
   common as commonConfigs,
 } from '../configs';
 
-const common = [];
+const common = [
+  new FlowBabelWebpackPlugin(),
+];
 
 const development = [
   new webpack.NamedModulesPlugin(),
